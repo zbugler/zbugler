@@ -1,0 +1,712 @@
+<title>Year 10 SOR Study Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: sticky contents rail beside one long reading column; every section opens with a priority badge so revision time goes where the marks are. */
+:root{
+  --bg:#F5F6FA; --surface:#FFFFFF; --surface2:#EEF0F8; --fg:#1A1F33; --muted:#5A6180; --line:#D9DCEA;
+  --accent:#3A4BC6; --accent-soft:#E4E7FA; --on-accent:#FFFFFF;
+  --hot:#B3261E; --hot-soft:#FBE7E5; --warn:#8A5A00; --warn-soft:#FBF0D5; --good:#1E6B45; --good-soft:#DFF3E8; --grey-soft:#E9EBF2;
+  --head:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12141F; --surface:#1B1F30; --surface2:#242944; --fg:#E7E9F4; --muted:#A4AAC6; --line:#323858;
+  --accent:#9AA6FF; --accent-soft:#272E5C; --on-accent:#12141F;
+  --hot:#FF9A93; --hot-soft:#40201F; --warn:#F0C26A; --warn-soft:#3B2F12; --good:#7FD6A5; --good-soft:#173A2A; --grey-soft:#2A2F47; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12141F; --surface:#1B1F30; --surface2:#242944; --fg:#E7E9F4; --muted:#A4AAC6; --line:#323858;
+  --accent:#9AA6FF; --accent-soft:#272E5C; --on-accent:#12141F;
+  --hot:#FF9A93; --hot-soft:#40201F; --warn:#F0C26A; --warn-soft:#3B2F12; --good:#7FD6A5; --good-soft:#173A2A; --grey-soft:#2A2F47; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;
+  padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:20px}}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700;margin-bottom:6px}
+h3{font-size:1.15rem;font-weight:600;margin:26px 0 8px}
+h4{font-size:.95rem;font-weight:600;margin:16px 0 6px}
+p{margin:0 0 12px;max-width:72ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:76ch}
+li{margin-bottom:5px}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+small,.muted{color:var(--muted)}
+
+/* rail */
+nav.rail{position:sticky;top:16px;font-size:.9rem}
+nav.rail .brand{font-family:var(--head);font-weight:700;font-size:1rem;margin-bottom:10px}
+nav.rail ol{list-style:none;padding:0;margin:0}
+nav.rail a{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:6px 10px;border-radius:6px;color:var(--fg);text-decoration:none}
+nav.rail a:hover{background:var(--surface2)}
+nav.rail .tag{flex:none;font-size:.7rem;padding:1px 7px;border-radius:99px;font-weight:600}
+@media(max-width:900px){nav.rail{position:static;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+  nav.rail ol{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:2px}}
+
+/* sections */
+section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px max(18px,3vw);margin-bottom:22px;min-width:0}
+header.top{padding:6px 0 22px}
+header.top p{color:var(--muted);font-size:1.05rem;margin-top:10px}
+.eyebrow{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:6px}
+.badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:8px}
+.p1{background:var(--hot-soft);color:var(--hot)} .p2{background:var(--warn-soft);color:var(--warn)}
+.p3{background:var(--accent-soft);color:var(--accent)} .p4{background:var(--grey-soft);color:var(--muted)}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:18px}
+
+.box{border-radius:10px;padding:14px 16px;margin:14px 0;border:1px solid var(--line);background:var(--surface2);max-width:80ch}
+.box.exam{background:var(--hot-soft);border-color:transparent} .box.tip{background:var(--good-soft);border-color:transparent}
+.box.note{background:var(--warn-soft);border-color:transparent}
+.box strong.t{display:block;font-family:var(--head);margin-bottom:4px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:14px 0}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg);min-width:0}
+.card h4{margin-top:0}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.93rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--surface2);font-family:var(--head);font-weight:600;font-size:.85rem}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+table.cmp td:first-child{white-space:nowrap}
+
+details{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:var(--bg)}
+details>summary{cursor:pointer;padding:11px 14px;font-weight:600;list-style:none;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:"+";font-family:var(--head);font-size:1.2rem;line-height:1;color:var(--accent)}
+details[open]>summary::after{content:"–"}
+details>.in{padding:2px 16px 14px}
+details>.in p:last-child,details>.in ul:last-child{margin-bottom:0}
+.q{display:flex;gap:10px}
+.q .n{font-family:var(--head);color:var(--accent);flex:none}
+
+.timeline{border-left:3px solid var(--accent-soft);margin:14px 0 14px 8px;padding-left:18px;max-width:80ch}
+.timeline div{position:relative;margin-bottom:12px}
+.timeline div::before{content:"";position:absolute;left:-26px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.timeline b{font-family:var(--head)}
+
+.check{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.check input{margin-top:5px;width:18px;height:18px;flex:none;accent-color:var(--accent)}
+kbd,.src{font-family:var(--head);font-weight:600;font-size:.8rem;background:var(--accent-soft);color:var(--accent);border-radius:5px;padding:1px 7px;white-space:nowrap}
+.pill{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--surface2);margin:0 4px 4px 0;border:1px solid var(--line)}
+.model p{max-width:75ch}
+.wc{font-size:.85rem;color:var(--muted)}
+footer{color:var(--muted);font-size:.85rem;padding:6px 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+<nav class="rail" aria-label="Contents">
+  <div class="brand">SOR Exam Guide</div>
+  <ol>
+    <li><a href="#start">1. The exam <span class="tag p1">start</span></a></li>
+    <li><a href="#stimulus">2. Stimulus decoder <span class="tag p1">must</span></a></li>
+    <li><a href="#david">3. David: Samuel vs Chronicles <span class="tag p1">must</span></a></li>
+    <li><a href="#wbt">4. World behind the text <span class="tag p1">must</span></a></li>
+    <li><a href="#covenant">5. Covenant &amp; significance <span class="tag p1">must</span></a></li>
+    <li><a href="#kings">6. Saul, David, Solomon <span class="tag p2">should</span></a></li>
+    <li><a href="#books">7. Historical books <span class="tag p2">should</span></a></li>
+    <li><a href="#interpret">8. Interpreting the Bible <span class="tag p3">basics</span></a></li>
+    <li><a href="#background">9. Background &amp; timeline <span class="tag p4">context</span></a></li>
+    <li><a href="#write">10. Writing toolkit <span class="tag p1">must</span></a></li>
+    <li><a href="#practice">11. Practice questions <span class="tag p1">do</span></a></li>
+    <li><a href="#quick">12. Quick-fire revision</a></li>
+    <li><a href="#notes">13. Source map &amp; gaps</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <div class="eyebrow">Year 10 Study of Religion · Old Testament</div>
+  <h1>Study guide: David, Samuel &amp; Chronicles</h1>
+  <p>Your teacher's five units reorganised by what the exam will actually ask. Start at section 1, work the "must know" sections first, then write at least three practice responses under timed conditions.</p>
+</header>
+
+<!-- 1 -->
+<section id="start">
+  <span class="badge p1">Read first</span>
+  <h2>1. What the exam is, and what it will probably ask</h2>
+  <p class="lead">Facts come from your Week 1 slides and the marking criteria. The prediction is my reading of those documents, not something your teacher has confirmed.</p>
+
+  <div class="grid">
+    <div class="card"><h4>Format (confirmed)</h4>
+      <ul><li>Extended response exam, PM session</li><li>90 minutes + 10 minutes reading</li><li><b>1 question</b>, 600–800 words</li><li>Stimulus provided (6 sources)</li><li>Genre: analytical essay</li></ul></div>
+    <div class="card"><h4>Marks (from the criteria)</h4>
+      <ul><li><b>Explaining</b> 6</li><li><b>Analysing</b> 8</li><li><b>Evaluating</b> 8</li><li><b>Communicating</b> 3</li><li>Top bands add to 25. Analysing + Evaluating is 16 of 25.</li></ul></div>
+    <div class="card"><h4>Predicted focus</h4>
+      <p>Every stimulus source is about David: Samuel's version, Chronicles' version, Saul vs David, the Davidic covenant. Expect a question that makes you compare how David is represented, explain why using the <b>world behind the text</b>, then judge his <b>significance</b>.</p></div>
+  </div>
+
+  <div class="box exam"><strong class="t">Most likely question shapes</strong>
+    <ul>
+      <li>"To what extent do the world behind the text and the purposes of the authors explain why David is represented differently in Samuel and Chronicles?"</li>
+      <li>A hypothesis to judge: "Chronicles censors David" (Source 1 says almost exactly this).</li>
+      <li>"Evaluate the significance of David for the Jewish people and for Christians."</li>
+    </ul>
+    <p>Whatever the wording, a top response does the same three jobs: <b>explain</b> the features of the texts, <b>analyse</b> the differences and what shaped them, then <b>judge</b> significance with an argument. Section 11 has eight practice questions covering each shape.</p>
+  </div>
+
+  <h3>Where to spend your revision time</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Priority</th><th>Topics</th><th>Why</th></tr>
+    <tr><td><span class="badge p1">1 · Must know</span></td><td>David in Samuel vs Chronicles · World behind the text for each · Davidic covenant &amp; Messiah · The stimulus sources</td><td>Direct hit on all four criteria and on the stimulus.</td></tr>
+    <tr><td><span class="badge p2">2 · Should know</span></td><td>Saul and Solomon as contrasts · Deuteronomist vs Chronicler · Sacred history</td><td>Gives depth for "distinguishing features of OT texts" and for Source 2.</td></tr>
+    <tr><td><span class="badge p3">3 · Basics</span></td><td>Three worlds of the text · Literal and spiritual senses · Types of truth · Bible myths</td><td>Supplies the vocabulary of analysis. A few precise terms lift your Explaining marks.</td></tr>
+    <tr><td><span class="badge p4">4 · Context</span></td><td>Salvation history timeline · Images of God · Jewish holy books · Psalms · minor characters</td><td>Useful background and quick-fire facts, unlikely to be the main focus.</td></tr>
+  </table></div>
+
+  <h3>How you are marked, in plain English</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Criterion</th><th>Top band asks for</th><th>So you must</th></tr>
+    <tr><td>Explaining (6)</td><td>Comprehensive, relevant <b>distinguishing features of OT texts</b> that shape how events and characters are represented. Detailed explanations. Inaccuracies not significant.</td><td>Name features: sacred history not modern history, theological purpose, Deuteronomist and Chronicler viewpoints, genre, selection and omission. Get facts right.</td></tr>
+    <tr><td>Analysing (8)</td><td>Thorough, accurate <b>differentiation</b> of representations. Well-reasoned analysis of how the <b>World Behind the Text</b> shapes them. <b>Effective use of stimulus</b>.</td><td>Compare side by side. For each difference say <i>why</i> (date, audience, author's aim). Quote or refer to sources by number.</td></tr>
+    <tr><td>Evaluating (8)</td><td><b>Discerning judgments</b> on significance for <b>individuals, groups and society</b>. Thorough, justified arguments tied to the question.</td><td>Take a position on "to what extent". Cover at least an individual, a group (Jews, Christians, the exiles) and society. Argue it, then link back to the question.</td></tr>
+    <tr><td>Communicating (3)</td><td>Succinct and logical. Analytical essay features. Minimal errors.</td><td>Intro with thesis, topic sentences, conclusion. Stay inside 600–800 words. Proofread.</td></tr>
+  </table></div>
+</section>
+
+<!-- 2 -->
+<section id="stimulus">
+  <span class="badge p1">Must know</span>
+  <h2>2. Stimulus decoder</h2>
+  <p class="lead">The six sources you will receive. The exam sources will be these exact ones, so learn what each is for before you walk in. Use at least four by number, and make sure a quotation or reference does work in your argument.</p>
+
+  <div class="tablewrap"><table>
+    <tr><th>Source</th><th>What it says</th><th>Use it to…</th></tr>
+    <tr><td>1<br><small>MyJewishLearning, "Fourteen Things…"</small></td><td>David's story appears twice. Samuel is the first, "unexpurgated" version: sexual and physical violence, scandal, dysfunction. Chronicles, added later, is a "willfully censored" version showing a milder, tamer, more pious David. Wellhausen: "See what Chronicles has made of David!"</td><td>Open or frame your thesis. Show <b>differentiation</b>. Then <b>evaluate</b> the word "censored": was it censorship, or a different purpose? (Chronicles is not hiding the truth from anyone; its readers already had Samuel.)</td></tr>
+    <tr><td>2<br><small>New Jerome Biblical Commentary, 2000</small></td><td>Second, more theological story: the comparison between Saul and David. Saul abandoned by Yahweh (1 Sam 16:14); Yahweh is with David. Saul trusts arms and fears, David trusts God and delivers Israel from the Philistines.</td><td>Show how Samuel's David is defined by <b>contrast with Saul</b> and by God's presence. Evidence that Samuel is also theological, not only "scandalous".</td></tr>
+    <tr><td>3<br><small>Psalm 89 + Lion Guide, 2010</small></td><td>God swears a covenant with David: line and throne established forever. Israel later hoped for a Messiah ("anointed king"). Luke 1:32-33 picks up Nathan's prophecy. Jesus is the long-awaited Davidic king. David foreshadows the Messiah "despite his failings".</td><td><b>Evaluate significance</b> for Jews (hope after exile) and Christians (Jesus as Son of David). The "despite his failings" phrase lets you link back to Samuel.</td></tr>
+    <tr><td>4<br><small>Shmoop, "King David in 1 Chronicles"</small></td><td>David is righteous and blessed. Praises God (29:10, 29:20), seeks God's advice before battle (14:8-17), brings the Ark to Jerusalem (13:2), offers burnt offerings (16:2), idea to build the Temple (17:1), makes the Temple plans (28:11), follows God's laws (15:15, 22:13).</td><td>Concrete Chronicles evidence. All positive, all temple and worship focused. Note: the source says a king must "keep up his end of the bargain".</td></tr>
+    <tr><td>5<br><small>Bible Project poster: Samuel</small></td><td>Four panels' worth: 1 Sam 1-7 Hannah, Philistines, Ark; 8-31 Israel demands a king, Saul's flaws and fall, David rises, Saul hunts him; 2 Sam 1-20 David's success, Jerusalem, <b>2 Sam 7</b>, Bathsheba, Nathan confronts him ("You are that man"), Amnon/Tamar/Absalom, Absalom's rebellion; 2 Sam 21-24 appendix incl. David's census. Character studies: Saul is a <b>warning</b>; David an <b>example of trust</b> and hope despite human evil. Theme: God opposes the proud and exalts the humble.</td><td>Show the <b>full, unfiltered</b> David: Bathsheba, Uriah, family violence, Absalom. Shows Samuel contains failure and repentance.</td></tr>
+    <tr><td>6<br><small>Bible Project poster: Chronicles</small></td><td>"A story in search of an ending." 1 Chr 1-9 genealogies (from Adam) stressing David the messianic king and the priesthood. 1 Chr 10-29: <b>left out</b> persecution by Saul, adultery and murder; <b>new material</b> preparations for the Temple (22-29) and plans for the Temple (28:11-19, David compared to Moses). Why? God's covenant promise (ch 17, compare 2 Sam 7), a "new David": to portray David as an image of the <b>future messianic king</b>. 2 Chr: kings of Judah, left out northern kings; obedient kings blessed, unfaithful kings suffer. Ends with Cyrus (36:23), an incomplete sentence.</td><td>Gives you the <b>why</b>: purpose, audience and selection. This poster is the answer key to the Samuel vs Chronicles difference.</td></tr>
+  </table></div>
+
+  <div class="box tip"><strong class="t">A neat way to use all six</strong>
+    <p>Sources <b>1, 5</b> = Samuel's David (full, flawed). Sources <b>4, 6</b> = Chronicles' David (ideal, temple-builder). Source <b>2</b> = the theology inside Samuel. Source <b>3</b> = what both versions became: the Messiah hope. That gives you a built-in essay structure.</p></div>
+
+  <div class="box note"><strong class="t">Judge the sources too</strong>
+    <p>Source 1 and Source 4 are websites (a Jewish learning site and a study-guide site), while Source 2 is a scholarly commentary and Source 3 is a church guide with scripture. Strong responses notice that Source 1's word "censored" is the author's interpretation, not the text's own claim.</p></div>
+</section>
+
+<!-- 3 -->
+<section id="david">
+  <span class="badge p1">Must know</span>
+  <h2>3. David in Samuel vs Chronicles</h2>
+  <p class="lead">This is the centre of the exam. Learn the table, then be able to explain every row with a "because".</p>
+
+  <div class="tablewrap"><table class="cmp">
+    <tr><th>Category</th><th>1 &amp; 2 Samuel</th><th>1 Chronicles</th></tr>
+    <tr><td>Overall portrait</td><td>Complex, human: shepherd, giant-killer, outlaw, poet, king and also adulterer, murderer, failed father.</td><td>Ideal, pious, faithful: temple planner, worship organiser, model king. Source 1: "milder, tamer… more pious".</td></tr>
+    <tr><td>Rise to power</td><td>Chosen and anointed as a boy (1 Sam 16). Goliath (17). Years on the run from Saul. Rules Judah at Hebron first, civil war, then all tribes.</td><td>Starts with Saul's death (ch 10), then <b>all Israel</b> anoint David together at Hebron (ch 11). No years of conflict.</td></tr>
+    <tr><td>Relationship with Saul</td><td>Central story. Saul's jealousy, spear-throwing, hunting David (1 Sam 18-26). David spares Saul twice. Laments Saul and Jonathan (2 Sam 1).</td><td><b>Left out.</b> Saul's death is explained as unfaithfulness: he did not inquire of the Lord (1 Chr 10:13-14).</td></tr>
+    <tr><td>Relationship with God</td><td>Trusts God, prays, repents (Ps 51 tradition). Yet acts on his own desire. Nathan confronts him: "You are that man" (2 Sam 12).</td><td>Seeks God's advice before battle (14:8-17). Praises God a lot (29:10, 29:20). Never confronted for a major sin.</td></tr>
+    <tr><td>Jerusalem and Ark</td><td>Conquers Jerusalem, makes it the capital (2 Sam 5). Ark moves in ch 6 (Uzzah dies).</td><td>Ark is a major priority: organised procession with Levites, music, sacrifices (13, 15-16). David offers sacrifices and wears priestly dress.</td></tr>
+    <tr><td>Covenant (Nathan)</td><td>2 Sam 7: David wants to build a "house" (temple). God says no, and promises to build David a "house" (dynasty).</td><td>1 Chr 17: nearly the same oracle, but pointed at <b>Solomon</b> who will build the temple and whose throne is secure. "I will not take my love away from him, as I took it away from your predecessor."</td></tr>
+    <tr><td>Sin and failure</td><td>Bathsheba and Uriah (ch 11), Amnon and Tamar (13), Absalom's revolt (15-18), the census (24).</td><td><b>Left out:</b> Bathsheba, Uriah, Tamar/Amnon, Absalom's rebellion. The census <b>is</b> kept (ch 21, where Satan incites David) and ends at the altar site that becomes the Temple site.</td></tr>
+    <tr><td>Wars</td><td>Philistine wars, Ammonites, "mighty men", harsh war scenes.</td><td>Military victories kept, brief. Emphasis on God giving success.</td></tr>
+    <tr><td>Why David can't build the Temple</td><td>God didn't ask for a house yet (2 Sam 7). No mention of bloodshed as the reason.</td><td>David had "shed much blood" (1 Chr 22:8; 28:3). Yet he gathers materials and plans (22-29), compared to Moses receiving the tabernacle plan.</td></tr>
+    <tr><td>Legacy / succession</td><td>Messy: the fight over who succeeds him, Adonijah, Solomon (1 Kings 1-2).</td><td>Smooth: David publicly hands Solomon the plans and the kingdom (28-29). Solomon is secure, with all Israel's support.</td></tr>
+    <tr><td>Purpose</td><td>Show how God works through a flawed king, and warn of the cost of sin. Part of the Deuteronomist history.</td><td>Give a returned, kingless community hope: right worship, Temple, Davidic promise. Present David as "an image of the future messianic king" (Source 6).</td></tr>
+  </table></div>
+
+  <h3>Same king, different story: what's really going on</h3>
+  <ul>
+    <li><b>Not a contradiction.</b> Chronicles' readers already had Samuel and Kings. The Chronicler chooses what to retell. Think <i>selection and emphasis</i>, not lying.</li>
+    <li><b>Samuel asks:</b> "How did Israel get a king, and why did it all go wrong?" It answers with warning and honesty.</li>
+    <li><b>Chronicles asks:</b> "Who are we now, and how do we stay faithful after the Exile?" It answers with identity (genealogies), worship (Temple, Levites) and hope (David's line).</li>
+    <li><b>Both agree</b> that God chose David, that the covenant matters, and that David's reign was foundational.</li>
+  </ul>
+
+  <h3>Samuel quick outline (for referencing)</h3>
+  <div class="grid">
+    <div class="card"><h4>1 Samuel 1-7</h4><p>Hannah's song: God opposes the proud and lifts the humble. Samuel, last judge. Ark captured by Philistines and returned.</p></div>
+    <div class="card"><h4>1 Samuel 8-15</h4><p>Israel demands a king "like the other nations". Saul anointed. Disobeys God in ch 13 and ch 15 and is rejected.</p></div>
+    <div class="card"><h4>1 Samuel 16-31</h4><p>David anointed, kills Goliath (17), Saul turns jealous (18-20), David on the run (21-26), Saul dies in battle (31).</p></div>
+    <div class="card"><h4>2 Samuel 1-10</h4><p>David laments Saul, unites the tribes, takes Jerusalem (5), brings the Ark (6), receives the covenant (7).</p></div>
+    <div class="card"><h4>2 Samuel 11-20</h4><p>Bathsheba and Uriah (11), Nathan (12), Amnon/Tamar/Absalom (13), Absalom's rebellion (15-18).</p></div>
+    <div class="card"><h4>2 Samuel 21-24</h4><p>Appendix: failure of Saul, David's poems and mighty men, David's failed census (24).</p></div>
+  </div>
+
+  <h3>Chronicles quick outline</h3>
+  <div class="grid">
+    <div class="card"><h4>1 Chr 1-9</h4><p>Genealogies from Adam. Focus on Judah/David (the Messianic king) and the priesthood (Aaron, Eleazar, Phinehas).</p></div>
+    <div class="card"><h4>1 Chr 10-29</h4><p>Saul's death, David king, Ark, covenant (17), census (21), temple preparations (22), Levites organised (23-27), David's plans and farewell (28-29).</p></div>
+    <div class="card"><h4>2 Chr 1-36</h4><p>Solomon builds the Temple. Kings of Judah only. Obedient kings are blessed, unfaithful kings suffer. Ends with Cyrus' decree (36:23).</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="wbt">
+  <span class="badge p1">Must know</span>
+  <h2>4. The World Behind the Text</h2>
+  <p class="lead">The marking criteria use these exact words (criterion 2.2). It means the history, culture and author's situation that shaped how a text was written. Use this table for the WBT scaffold your class completed.</p>
+
+  <div class="tablewrap"><table class="cmp">
+    <tr><th>Question</th><th>1 &amp; 2 Samuel</th><th>1 &amp; 2 Chronicles</th></tr>
+    <tr><td>When written?</td><td>Part of the Deuteronomist history (Joshua to Kings). Your worksheet says during or shortly after the divided kingdom. Scholars place the final editing around the Exile. Exact dates are debated, so say "edited and completed by the Deuteronomists".</td><td>After the Babylonian Exile. Cyrus' decree (539 BC) is the last scene. Often dated to the Persian period (4th century BC).</td></tr>
+    <tr><td>What was happening?</td><td>Looking back on the rise and fall of the monarchy. The northern kingdom fell to Assyria (721 BC) and Judah to Babylon (587 BC). Editors ask why.</td><td>Exiles are back in Judah, a province of Persia. No king. Temple rebuilt (smaller). A small, struggling community.</td></tr>
+    <tr><td>Where is the story set?</td><td>Canaan / Israel: Shiloh, Gibeah, Hebron, Jerusalem. Philistine coast and hill country.</td><td>Mainly Jerusalem and Judah. Northern kingdom ignored.</td></tr>
+    <tr><td>When is the story set?</td><td>c. 1050 to 970 BC: end of the judges, Saul, David.</td><td>Same period, retold: David and Solomon (c. 1000 BC), then kings of Judah to the Exile.</td></tr>
+    <tr><td>How did society operate?</td><td>Tribal society moving to monarchy. Prophets (Samuel, Nathan) check kings. Covenant law. Constant war with the Philistines. Royal households with many wives and rivals.</td><td>Community led by priests and Levites around the Temple. Identity based on ancestry (genealogies), worship and Torah.</td></tr>
+    <tr><td>Author's intention?</td><td>Deuteronomist theology: God rewards faithfulness and punishes sin. Show Saul's failure, David's flawed but trusting kingship, and the promise in 2 Sam 7.</td><td>Encourage the returned exiles. Stress Temple worship, Davidic hope, faithful and unfaithful kings. Portray David as a model and as a pattern for a coming king.</td></tr>
+  </table></div>
+
+  <div class="box exam"><strong class="t">The sentence that earns Analysing marks</strong>
+    <p>"Because the Chronicler was writing for a kingless, rebuilding community, the portrayal of David <i>shifts</i> from a flawed founder to a model of temple worship, which is why the Bathsheba narrative from Samuel is omitted."</p>
+    <p>That is: <b>context → author's aim → representation → example</b>. Write one of these for each difference.</p></div>
+</section>
+
+<!-- 5 -->
+<section id="covenant">
+  <span class="badge p1">Must know</span>
+  <h2>5. The Davidic covenant and why David matters</h2>
+  <p class="lead">Your Evaluating marks (8) depend on arguing significance for <b>individuals, groups and society</b>. This section gives you the material.</p>
+
+  <h3>The covenant</h3>
+  <ul>
+    <li><b>2 Samuel 7 / 1 Chronicles 17 (Nathan's prophecy):</b> David's "house" will last. God will raise up his offspring, establish his throne forever, be a father to him. David's son builds the Temple.</li>
+    <li><b>Psalm 89 (Source 3):</b> "I have made a covenant with my chosen one… I will establish his line forever, his throne as long as the heavens endure."</li>
+    <li>It fits the earlier covenants: <b>Abraham</b> (promise of land and blessing to all nations, Gen 12), <b>Moses/Sinai</b> (law, "people of God"). The Samuel poster links 2 Sam 7 to the promise to Abraham.</li>
+    <li>The covenant with David is <b>unconditional in promise</b> but Chronicles also stresses that kings must be faithful to prosper (Source 4: "a king needs to keep up his end of the bargain").</li>
+  </ul>
+
+  <h3>Significance, by level</h3>
+  <div class="grid">
+    <div class="card"><h4>Individuals</h4>
+      <ul><li>David shows a believer can fail badly (Bathsheba), repent and still be used by God.</li><li>Servant leadership: humility, selflessness, compassion, empowerment, integrity, trust in God (Week 4).</li><li>Saul is a warning, David an example of trust.</li></ul></div>
+    <div class="card"><h4>Groups</h4>
+      <ul><li><b>Exiles/post-exilic Jews:</b> Chronicles offers identity and hope: Davidic line, Temple, faithfulness.</li><li><b>Priests and Levites:</b> David organises their worship duties.</li><li><b>Christians:</b> Jesus is the Davidic king, "Son of David" (Luke 1:32-33).</li></ul></div>
+    <div class="card"><h4>Society</h4>
+      <ul><li>Model of how a nation is led under God: justice, accountability to prophets, covenant law.</li><li>Jerusalem becomes the political and religious capital for centuries.</li><li>Messianic hope shapes Jewish and Christian culture: kingship, music (Psalms), worship.</li></ul></div>
+  </div>
+
+  <h3>Priestly and kingly works (Week 4)</h3>
+  <ul>
+    <li><b>Kingly:</b> leading armies, ruling justly, uniting tribes, capturing Jerusalem, administration.</li>
+    <li><b>Priestly:</b> bringing the Ark, offering sacrifices, planning the Temple, organising worship. Chronicles highlights these much more than Samuel.</li>
+    <li>This distinction helps explain the two portraits: Samuel stresses the king, Chronicles the king as worship leader.</li>
+  </ul>
+
+  <h3>Messiah, foreshadowing and the "world in front of the text"</h3>
+  <ul>
+    <li>Messiah means "anointed king". After the monarchy ended, Jews hoped for a new Davidic ruler.</li>
+    <li>Christians read David as <b>foreshadowing</b> Jesus: "Jesus is thus the long-awaited Davidic king" (Source 3). This is the <i>allegorical</i> sense (section 8).</li>
+    <li>Samuel and Chronicles both prepare this hope. Chronicles' "new David" and the open ending ("Let him go up…") invite readers to expect more.</li>
+  </ul>
+  <div class="box tip"><strong class="t">Judgement tip</strong>
+    <p>"To what extent" answers are stronger when they argue a line like: <i>Chronicles' version is significant mainly for the community and its hope, while Samuel's is significant for individuals because it faces failure honestly. Together they give the fullest picture of David.</i></p></div>
+</section>
+
+<!-- 6 -->
+<section id="kings">
+  <span class="badge p2">Should know</span>
+  <h2>6. Saul, David and Solomon</h2>
+  <p class="lead">Week 6 focused on these three. Source 2 makes a Saul vs David contrast, so know both well. Solomon is mainly relevant through the Temple.</p>
+
+  <div class="tablewrap"><table class="cmp">
+    <tr><th></th><th>Saul</th><th>David</th><th>Solomon</th></tr>
+    <tr><td>Role</td><td>First king of Israel, chosen when people wanted a king "like other nations".</td><td>Second king, "God's King of Israel", united the tribes, took Jerusalem.</td><td>Son of David and Bathsheba. Third king; built the Temple.</td></tr>
+    <tr><td>Strengths</td><td>Tall, a capable soldier, anointed by Samuel.</td><td>Courageous, musician and poet, devoted to God, charismatic leader, repents.</td><td>Wisdom, peace, wealth, Temple builder, international fame (Queen of Sheba).</td></tr>
+    <tr><td>Weaknesses</td><td>Pride, fear, dishonesty, disobedience (1 Sam 13 and 15), jealousy, paranoia.</td><td>Adultery with Bathsheba, murder of Uriah, family failure, the census.</td><td>Heavy taxes and forced labour, foreign wives, idolatry. Kingdom divides after his death.</td></tr>
+    <tr><td>Relationship with God</td><td>Rejected, God's spirit leaves (16:14). Relies on arms and himself (Source 2).</td><td>Trusts God. God is with him (Source 2). Receives the covenant.</td><td>Starts by asking for wisdom, ends turning away.</td></tr>
+    <tr><td>In Samuel</td><td>Major, a tragic "warning".</td><td>Major, a flawed "example of trust".</td><td>Not in Samuel; appears at the start of Kings.</td></tr>
+    <tr><td>In Chronicles</td><td>Only his death (1 Chr 10), as unfaithfulness.</td><td>Ideal, temple planner.</td><td>Builds the Temple David planned. Ideal successor.</td></tr>
+  </table></div>
+
+  <h3>Saul vs David in one paragraph (Source 2)</h3>
+  <p>Saul has been abandoned by Yahweh and the narrator shows him dismayed by "unkingly fear", trusting in arms. David, in 1 Samuel 17, trusts God and delivers Israel from the Philistines. The writer places them side by side so that David's faith shines against Saul's despair. This shows that leadership in the Old Testament is judged by <b>relationship with God</b>, not by power.</p>
+
+  <h3>Understanding character in biblical narrative (Week 6 video)</h3>
+  <ul>
+    <li>Biblical narrators say little about inner thoughts. We learn character from <b>actions, dialogue, what others say, and what God says</b>.</li>
+    <li>Characters are often <b>complex</b>: heroes have flaws, and failures can lead to growth.</li>
+    <li>Characters work as <b>models or warnings</b> (the Samuel poster: Saul a warning, David an example).</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section id="books">
+  <span class="badge p2">Should know</span>
+  <h2>7. The Historical Books: Deuteronomist vs Chronicler</h2>
+  <p class="lead">This is the bridge from Explaining to Analysing: it tells you <i>what kind of text</i> you are reading. Source: Introduction to the Historical Books (Catholic Youth Bible).</p>
+
+  <h3>Distinguishing features of Old Testament historical texts</h3>
+  <ul>
+    <li><b>Sacred history, not modern history.</b> Authors say "Let us tell you what the events mean in the light of our faith in God." They interpret events rather than only report facts.</li>
+    <li><b>Purpose over completeness.</b> Authors select, arrange and omit to serve a message.</li>
+    <li><b>God acts in history.</b> God cares deeply about what is happening in human affairs.</li>
+    <li><b>Reward and punishment.</b> People are happier following God's law than turning away.</li>
+    <li><b>Multiple authors and sources</b>, with stories sometimes repeated (Myth 3, section 8).</li>
+  </ul>
+
+  <div class="grid">
+    <div class="card"><h4>Deuteronomist (the "D" school)</h4>
+      <p>Wrote or edited Deuteronomy, Joshua, Judges, 1 &amp; 2 Samuel, 1 &amp; 2 Kings.</p>
+      <ul><li>God rewards the good and punishes the wicked in this world.</li><li>Repeated pattern: (1) God's love, (2) people sin, (3) punishment, (4) people repent and cry out, (5) God forgives, (6) people sin again.</li><li>Measure of faithfulness: the <b>Sinai covenant</b>.</li></ul></div>
+    <div class="card"><h4>The Chronicler</h4>
+      <p>Wrote 1 &amp; 2 Chronicles and probably Ezra and Nehemiah.</p>
+      <ul><li>Still reward and punishment, but measure of faithfulness changes: <b>proper worship</b>, especially at the Jerusalem Temple.</li><li>Wrote after northern and southern kingdoms were destroyed, to nurture a small community rebuilding itself.</li><li>Focus on Judah, the Davidic line, priests, Levites.</li></ul></div>
+  </div>
+
+  <div class="box note"><strong class="t">Christian perspective</strong>
+    <p>The introduction reminds you that the authors' understanding of God "is not the same as Jesus' understanding". Christians read the historical books in the larger context of Jesus' teaching on God's unconditional love and unlimited mercy.</p></div>
+
+  <h3>The historical books at a glance</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Books</th><th>Content</th></tr>
+    <tr><td>Joshua, Judges</td><td>Settlement in the Promised Land, struggles with enemies.</td></tr>
+    <tr><td>1-2 Samuel, 1 Kings</td><td>Rise of the united kingdom under David.</td></tr>
+    <tr><td>1-2 Kings, 1-2 Chronicles</td><td>Division into northern and southern kingdoms until the fall of Jerusalem (587 BC).</td></tr>
+    <tr><td>Ezra, Nehemiah</td><td>Return from Exile and rebuilding.</td></tr>
+    <tr><td>1-2 Maccabees</td><td>Jewish resistance to Greek domination (2nd century BC).</td></tr>
+    <tr><td>Tobit, Judith, Esther</td><td>Three "novels" about meeting God in difficult times.</td></tr>
+  </table></div>
+</section>
+
+<!-- 8 -->
+<section id="interpret">
+  <span class="badge p3">Basics</span>
+  <h2>8. Interpreting the Bible</h2>
+  <p class="lead">Learn these terms. A few correct, precise terms are an easy way to show "distinguishing features" and analysis.</p>
+
+  <h3>Three Worlds of the Text</h3>
+  <div class="grid">
+    <div class="card"><h4>World <i>behind</i> the text</h4><p>History and culture: who wrote it, when, why, what was happening. Method: <b>historical-cultural criticism</b>.</p><p><small>Samuel: Deuteronomist, monarchy and exile. Chronicles: post-exile, Temple.</small></p></div>
+    <div class="card"><h4>World <i>of</i> the text</h4><p>The text itself: genre, structure, characters, literary devices. Method: <b>narrative criticism</b>.</p><p><small>Samuel: narrative history with character contrast. Chronicles: genealogies, lists, theological retelling.</small></p></div>
+    <div class="card"><h4>World <i>in front of</i> the text</h4><p>How readers and communities interpret and use it over time.</p><p><small>David as Messiah's ancestor; Psalms in worship; Luke 1:32-33.</small></p></div>
+  </div>
+  <details><summary>Worked example: the Shema (Deut 6:4-9) <span></span></summary><div class="in">
+    <ul>
+      <li><b>Behind:</b> Deuteronomy claims Moses as author but emerged over about three centuries, from the 8th century BC to the Exile. The "D" authors were probably priests or prophets. "Deuteronomy" comes from a Greek translation meaning "second law". Moses addresses the new generation at the edge of the Promised Land.</li>
+      <li><b>Of:</b> The Shema is Israel's creed: hear, Yahweh alone is God, respond with love. It is a declaration of faith, not a prayer. Three parts: Deut 6:4-9, Deut 11:13-21, Num 15:37-41.</li>
+      <li><b>In front:</b> Said morning and night, written on the mezuzah and in tefillin. Jesus calls its opening the first of the two great commandments (Mark 12:29-31).</li>
+    </ul></div></details>
+
+  <h3>Senses of Scripture (Catechism 117)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Sense</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>Literal</td><td>What the human author probably intended, found by good exegesis.</td><td>The Israelites cross the Red Sea and escape slavery.</td></tr>
+    <tr><td>Spiritual: allegorical</td><td>Points to Christ.</td><td>Red Sea crossing as a sign of Baptism and Christ's victory over death. David as foreshadowing the Messiah.</td></tr>
+    <tr><td>Spiritual: moral</td><td>How we should act.</td><td>David's repentance, Saul's pride.</td></tr>
+    <tr><td>Spiritual: anagogical</td><td>Eternal significance.</td><td>The Church as sign of God's heavenly Kingdom.</td></tr>
+  </table></div>
+
+  <h3>Contexts to consider</h3>
+  <ul>
+    <li><b>Historical and cultural context</b> (author's situation).</li>
+    <li><b>Literary form or device</b> (history, poetry, prophecy, metaphor, parable).</li>
+    <li><b>Unity of the whole Bible</b> ("use the Bible to interpret the Bible").</li>
+    <li><b>Sacred Tradition of the Church</b> (bishops hold final responsibility, with scholars helping).</li>
+    <li>Scholarly "criticisms" (textual, source, redaction, literary, historical, canonical) are positive methods of analysis. They deepen the literal sense but are not enough alone. <i>Redaction criticism</i> (how editors shaped the final text) is the one most relevant to Samuel and Chronicles.</li>
+    <li>Exegesis = the process of interpreting a passage.</li>
+  </ul>
+
+  <h3>Types of truth in the Bible</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>Scientific</td><td>Authors shared the science of their day (flat earth, six days). They were not writing science textbooks. Look beneath the inaccuracies for the religious truth.</td><td>Genesis 1</td></tr>
+    <tr><td>Historical</td><td>The Bible contains real history, but as "religious history", not an exact list of events. Authors tell events in different ways to convey religious truth.</td><td>OT history 2000 BC to AD 100; Gospels</td></tr>
+    <tr><td>Symbolic</td><td>Truth told in symbols; look beneath them for the intended meaning.</td><td>The serpent in Genesis 3 (the devil worming into the human heart); the garden = God's gifts</td></tr>
+    <tr><td>Proverbial</td><td>Everyday wisdom and advice.</td><td>Proverbs 26:4</td></tr>
+    <tr><td>Moral</td><td>How to live. Some teaching reflects the limited understanding of its time and must be read in context.</td><td>Ten Commandments; stoning for adultery; slavery</td></tr>
+    <tr><td>Religious</td><td>The central truth: about God, the universe, people, God's love, offer of salvation, and presence in history.</td><td>The whole Bible; Red Sea (Exod 14) as God's saving presence</td></tr>
+  </table></div>
+  <div class="box exam"><strong class="t">Link to the exam</strong>
+    <p>Samuel and Chronicles are mostly <b>historical truth told as religious history</b>. Differences in detail do not make the Bible false: both versions communicate <b>religious truth</b> for different audiences.</p></div>
+
+  <h3>Five myths about the Bible</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Myth</th><th>Fact</th></tr>
+    <tr><td>1. It has all the answers.</td><td>Jesus focused on one law: love God and others. Sacred Tradition also helps.</td></tr>
+    <tr><td>2. We know who wrote each book.</td><td>Names may not be real authors. Pseudonymous writing was a way of honouring a famous person (Paul and Ephesians).</td></tr>
+    <tr><td>3. Events happened in the order they appear.</td><td>Genesis-2 Kings looks chronological but has repeated stories (Gen 1 and 2); <b>Chronicles retells stories</b>. Many authors and sources.</td></tr>
+    <tr><td>4. The Bible predicts the future.</td><td>Apocalyptic literature (Daniel, Revelation) speaks to its own time. Only the Father knows the day and hour (Matt 24:36).</td></tr>
+    <tr><td>5. God dictated it word for word.</td><td>God inspired human authors who remained true authors, shaped by their time, place and culture.</td></tr>
+  </table></div>
+</section>
+
+<!-- 9 -->
+<section id="background">
+  <span class="badge p4">Context</span>
+  <h2>9. Background: salvation history, God, characters</h2>
+  <p class="lead">Lower priority for the essay, but your timeline gives the setting for the "world behind the text" and helps with quick questions.</p>
+
+  <h3>Salvation history timeline (Sprint Through Salvation History)</h3>
+  <div class="timeline">
+    <div><b>c. 1850 BC · Abraham.</b> The Promise: descendants a blessing to the world, land of Canaan. Patriarchs: Abraham, Isaac, Jacob. Matriarchs: Sarah, Rebekah, Rachel.</div>
+    <div><b>c. 1700–1290 BC · Egypt.</b> Famine brings Israel to Egypt. Later enslaved.</div>
+    <div><b>c. 1290 BC · Moses and the Exodus.</b> God reveals the name Yahweh ("I am the One who is always present"). Escape through the sea. Covenant at Sinai: Ten Commandments. Forty years in the desert.</div>
+    <div><b>c. 1250–1000 BC · Joshua and the Judges.</b> Conquest and settlement. Military leaders called judges. Shift from nomadic to agricultural life.</div>
+    <div><b>c. 1000 BC · David and Solomon.</b> Israel a nation: David anointed king, Jerusalem the capital. Promise that his line will endure. Solomon builds the Temple.</div>
+    <div><b>922 BC · Division.</b> Israel (north) and Judah (south). Heavy taxes, idolatry. Prophets call kings back to the Covenant.</div>
+    <div><b>721 BC · Assyria</b> destroys the northern kingdom.</div>
+    <div><b>587 BC · Babylon</b> destroys Judah and Jerusalem. Babylonian Exile. Second Isaiah: one and only God. Monotheism.</div>
+    <div><b>539 BC · Persians</b> (Cyrus) free the exiles. Return, rebuild the Temple. Ezra and Nehemiah re-establish the Law. Jews now called "Jews" (from Judah).</div>
+    <div><b>330 BC · Alexander the Great.</b> Greek rule; Maccabean revolt.</div>
+    <div><b>63 BC · Rome</b> captures Jerusalem. Hope for a messiah, perhaps from David's line.</div>
+    <div><b>Jesus</b> of the house of David. Christians see him as the Messiah.</div>
+  </div>
+  <p><small>The biblical period is about 1850 BC to AD 100, nearly 2000 years. Salvation History = the pattern of events showing God's presence and saving actions.</small></p>
+
+  <h3>Who's who: Homeland and Kingdom</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Person</th><th>Who and what</th></tr>
+    <tr><td>Joshua</td><td>Moses' successor. Leads Israel into Canaan.</td></tr>
+    <tr><td>Rahab</td><td>Canaanite woman in Jericho who hides Israelite spies and is spared with her family.</td></tr>
+    <tr><td>Philistines</td><td>Coastal enemy of Israel with iron weapons. Capture the Ark. Goliath is a Philistine.</td></tr>
+    <tr><td>Samson and Delilah</td><td>Judge with great strength fighting the Philistines. Delilah betrays him.</td></tr>
+    <tr><td>Samuel</td><td>Last judge and a prophet. Anoints both Saul and David. Son of Hannah.</td></tr>
+    <tr><td>Saul</td><td>First king. Fails through disobedience, jealousy.</td></tr>
+    <tr><td>David</td><td>Shepherd, giant-killer, king.</td></tr>
+    <tr><td>Bathsheba and Uriah</td><td>David commits adultery with Bathsheba and has her husband Uriah killed in battle. Nathan confronts David. Bathsheba later mother of Solomon.</td></tr>
+    <tr><td>Goliath</td><td>Philistine champion killed by David with a sling and stone (1 Sam 17). Symbol of trust in arms versus trust in God.</td></tr>
+    <tr><td>Jonathan</td><td>Saul's son and David's loyal friend, who protects David from his father. Dies at Gilboa. David's lament in 2 Sam 1.</td></tr>
+    <tr><td>Amnon</td><td>David's son who assaults his half-sister Tamar (2 Sam 13). Killed by Absalom. Shows consequences of David's sin on his family.</td></tr>
+    <tr><td>Absalom</td><td>David's son who avenges Tamar, then leads a rebellion (2 Sam 15-18) and dies.</td></tr>
+    <tr><td>Nathan</td><td>Prophet who delivers the covenant (2 Sam 7) and confronts David (2 Sam 12).</td></tr>
+  </table></div>
+
+  <h3>How God is portrayed in the Old Testament (Week 2)</h3>
+  <ul>
+    <li>God is described through <b>metaphor</b> (a figure of speech applied to something it is not literally true of): shepherd, rock, king, father, warrior, and also mother-like images (e.g. comforting as a mother in Isaiah 66:13).</li>
+    <li>Many images point to the idea that God is <b>beyond human gender</b>, neither male nor female. Using male images often reflects the culture of the writers. Using varied images shows that no single image captures God.</li>
+    <li>For the Week 2 question ("to what extent do the many manifestations of God… challenge or reinforce…"), a balanced answer: the variety of images <i>reinforces</i> that God is neither male nor female, while the dominant male imagery (king, father) <i>reflects the world behind the text</i>.</li>
+  </ul>
+
+  <h3>Jewish holy books, Bible structure and Psalms</h3>
+  <ul>
+    <li>The Jewish Bible is the <b>Tanakh</b>: <b>Torah</b> (law, first five books), <b>Nevi'im</b> (prophets, which include Samuel and Kings), <b>Ketuvim</b> (writings, which include Psalms and, in the traditional Jewish order, Chronicles last). The Chronicles poster shows Chronicles at the end of the traditional order, summing up Scripture "from Adam" to the return from Exile.</li>
+    <li>The Christian Old Testament places Chronicles after Kings among the historical books.</li>
+    <li>Psalms are poems and songs used in worship. Many are attributed to David. <b>Psalm 89</b> (Source 3) celebrates the Davidic covenant. Other royal psalms in the Samuel poster: 2, 72, 132, 145.</li>
+    <li>Compiled during and after the Exile, Jewish leaders began collecting their ancestral writings, forming the core of the Old Testament.</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="write">
+  <span class="badge p1">Must know</span>
+  <h2>10. Writing toolkit for the 600–800 word response</h2>
+
+  <h3>Timing plan (100 minutes)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Minutes</th><th>Do</th></tr>
+    <tr><td>0–10 (reading time)</td><td>Read the question. Underline the command word ("to what extent", "evaluate", "analyse"). Skim all six sources and tag each as Samuel, Chronicles, Saul/David, or Messiah.</td></tr>
+    <tr><td>10–25</td><td>Plan: thesis, 3 body paragraphs, which sources and which evidence go where.</td></tr>
+    <tr><td>25–85</td><td>Write. Aim for about 100 words intro, 3 × 170–200 words body, 100 words conclusion.</td></tr>
+    <tr><td>85–100</td><td>Proofread for spelling, grammar and facts. Check that every paragraph links to the question and cites at least one source.</td></tr>
+  </table></div>
+
+  <h3>Structure that hits every criterion</h3>
+  <div class="grid">
+    <div class="card"><h4>Introduction (~100 words)</h4><p>Define key terms. Briefly say David is represented differently in Samuel and Chronicles. State your <b>thesis</b> that answers "to what extent". Preview your three lines.</p></div>
+    <div class="card"><h4>Body 1: Explain and differentiate</h4><p>Features of the texts (sacred history, Deuteronomist vs Chronicler). Side-by-side comparison of David in each, with Sources 1, 4, 5, 6.</p></div>
+    <div class="card"><h4>Body 2: Analyse the WBT</h4><p>Why: Samuel's setting and theology, the Chronicler's post-exilic readers. Use Source 2 (Saul vs David) and Source 6 (what was left out and added).</p></div>
+    <div class="card"><h4>Body 3: Evaluate significance</h4><p>Covenant, Messiah, Source 3. Individuals, groups, society. Make a judgment and justify it.</p></div>
+    <div class="card"><h4>Conclusion (~100 words)</h4><p>Answer the question directly, restate your judgment in fresh words, close with the larger significance. No new evidence.</p></div>
+  </div>
+
+  <h3>Paragraph formula: P.E.E.L. + Why</h3>
+  <ul>
+    <li><b>Point</b> (topic sentence tied to the question).</li>
+    <li><b>Evidence</b> (a reference like 2 Sam 11, 1 Chr 28, or "Source 1").</li>
+    <li><b>Explain</b> what the evidence shows.</li>
+    <li><b>Why</b> (world behind the text) or <b>So what</b> (significance).</li>
+    <li><b>Link</b> back to the question.</li>
+  </ul>
+
+  <h3>Sentence starters</h3>
+  <div class="grid">
+    <div class="card"><h4>Differentiating</h4><p>Whereas Samuel presents… Chronicles instead… · In contrast to… · Source 5 shows… while Source 6 shows…</p></div>
+    <div class="card"><h4>Analysing the WBT</h4><p>This difference reflects the author's context… · Writing for exiles who had lost their king, the Chronicler… · The Deuteronomist editors were concerned with…</p></div>
+    <div class="card"><h4>Evaluating</h4><p>To a large extent… · Although… nevertheless… · This is most significant for… because… · Overall, the more convincing view is…</p></div>
+    <div class="card"><h4>Using sources</h4><p>As Source 3 suggests… · Source 1 claims "censored", but… · The poster in Source 6 explains that…</p></div>
+  </div>
+
+  <h3>Key vocabulary to use correctly</h3>
+  <p>
+    <span class="pill">salvation history</span><span class="pill">sacred history</span><span class="pill">covenant</span><span class="pill">Davidic dynasty</span><span class="pill">Messiah (anointed king)</span><span class="pill">Deuteronomist</span><span class="pill">the Chronicler</span><span class="pill">world behind / of / in front of the text</span><span class="pill">exegesis</span><span class="pill">literal / spiritual sense</span><span class="pill">foreshadowing</span><span class="pill">genealogy</span><span class="pill">post-exilic</span><span class="pill">Temple</span><span class="pill">Levites</span><span class="pill">redaction / editing</span><span class="pill">monotheism</span><span class="pill">idealised portrayal</span><span class="pill">omission</span><span class="pill">servant leadership</span>
+  </p>
+
+  <h3>Self-check before you finish (ticks are saved on this device)</h3>
+  <div id="checks">
+    <label class="check"><input type="checkbox" data-k="c1"><span>My thesis answers the exact question, including "to what extent".</span></label>
+    <label class="check"><input type="checkbox" data-k="c2"><span>I named at least two distinguishing features of OT texts (e.g. sacred history, Deuteronomist vs Chronicler).</span></label>
+    <label class="check"><input type="checkbox" data-k="c3"><span>I compared Samuel and Chronicles with specific examples and verse references.</span></label>
+    <label class="check"><input type="checkbox" data-k="c4"><span>I explained <i>why</i> using the world behind the text (dates, audience, purpose).</span></label>
+    <label class="check"><input type="checkbox" data-k="c5"><span>I used at least four of the six sources by number and did something with each.</span></label>
+    <label class="check"><input type="checkbox" data-k="c6"><span>I judged significance for individuals, groups and society.</span></label>
+    <label class="check"><input type="checkbox" data-k="c7"><span>I have an introduction, 3 body paragraphs and a conclusion, and it is 600–800 words.</span></label>
+    <label class="check"><input type="checkbox" data-k="c8"><span>I proofread for spelling, grammar and factual slips.</span></label>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="practice">
+  <span class="badge p1">Do these</span>
+  <h2>11. Extended response practice questions</h2>
+  <p class="lead">Each one is modelled on the marking criteria. Practise Q1 to Q3 first. Time yourself: 90 minutes for a full response, or 35 minutes for a planning-and-first-draft sprint. Open "Plan" only after trying.</p>
+
+  <details open><summary><span class="q"><span class="n">Q1</span><span>"Chronicles censors David." To what extent do you agree? Use the stimulus to support your response.</span></span></summary><div class="in">
+    <p><span class="pill">Evaluating hypothesis</span><span class="pill">Sources 1, 4, 5, 6</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li><b>Thesis:</b> Partly agree. Chronicles omits the scandals, but "censored" wrongly suggests hiding; it is a purposeful retelling for a new audience.</li>
+      <li><b>P1:</b> Evidence for "censorship": Bathsheba/Uriah and Absalom missing; Saul's persecution left out (Sources 1, 5, 6).</li>
+      <li><b>P2:</b> Evidence against: Samuel was still in the canon; the Chronicler adds new material (temple preparations, 1 Chr 22-29, Source 4); census kept. Purpose = hope for exiles, "image of the future messianic king" (Source 6).</li>
+      <li><b>P3:</b> Judgment: sacred history selects for meaning. Neither version tells the whole truth about David alone; together they do.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q2</span><span>To what extent is the representation of David shaped by the world behind the text of Samuel and of Chronicles?</span></span></summary><div class="in">
+    <p><span class="pill">Analysing 2.2</span><span class="pill">Sources 2, 5, 6</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Define world behind the text (history, culture, author's situation).</li>
+      <li>Samuel: Deuteronomist theology of reward/punishment; looking back on a failed monarchy; honest David; Saul vs David (Source 2).</li>
+      <li>Chronicles: post-exilic, kingless, Temple-centred; genealogies; omissions and additions (Source 6).</li>
+      <li>Judgment: world behind the text is the <b>main</b> shaper, but also genre, theological purpose and sources.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q3</span><span>Evaluate the significance of David for individuals, groups and society, using at least three sources.</span></span></summary><div class="in">
+    <p><span class="pill">Evaluating 3.1–3.3</span><span class="pill">Sources 3, 4, 2</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li><b>Individuals:</b> flawed believer, repentance, servant leadership; example of trust (Sources 2, 5).</li>
+      <li><b>Groups:</b> exiles' hope; priests and Levites; Christians and Jesus as Davidic king (Source 3).</li>
+      <li><b>Society:</b> Jerusalem, kingship, justice, Psalms, Messiah hope.</li>
+      <li>Rank them: argue which significance is greatest and why.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q4</span><span>"The historical books of the Old Testament are not like the history books we read in school." Explain this using the portrayal of David in Samuel and Chronicles.</span></span></summary><div class="in">
+    <p><span class="pill">Explaining 1.1–1.3</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Sacred history: events interpreted "in the light of faith".</li>
+      <li>Deuteronomist vs Chronicler: different purpose, different measure of faithfulness (covenant vs worship).</li>
+      <li>Examples: Samuel includes sin and consequences; Chronicles selects and emphasises Temple (Source 4).</li>
+      <li>Types of truth: historical truth presented as religious history.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q5</span><span>Analyse how the Davidic covenant is presented in 2 Samuel 7 and 1 Chronicles 17, and evaluate its significance for later generations.</span></span></summary><div class="in">
+    <p><span class="pill">Analysing + Evaluating</span><span class="pill">Sources 3, 6</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Same promise: lasting house/throne; Nathan's message.</li>
+      <li>Differences: Samuel's "house" pun (temple and dynasty); Chronicles focus on Solomon and Temple; "not take my love away… as from your predecessor".</li>
+      <li>Significance: hope after Exile, Messiah, Luke 1:32-33 (Source 3).</li>
+      <li>Written response task (Week 5): use 1 Chr 28:9-10 and 17:11-14 as evidence for David ensuring the dynasty's future.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q6</span><span>Compare how Saul and David are represented in Samuel. How does the writer's purpose shape this contrast, and which figure is more significant for later generations?</span></span></summary><div class="in">
+    <p><span class="pill">Analysing + Evaluating</span><span class="pill">Source 2, 5</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Saul: warning, pride, disobedience (1 Sam 13, 15), abandoned by God, fear (Source 2).</li>
+      <li>David: example of trust, God with him, Goliath; but still flawed (Bathsheba).</li>
+      <li>Purpose: Deuteronomist message that God opposes the proud and exalts the humble (Hannah's song).</li>
+      <li>Significance: David because of the covenant, but Saul remains a lasting warning for leaders.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q7</span><span>Samuel and Chronicles tell the story of David differently. Does this weaken the claim that the Bible communicates truth? Refer to the three worlds of the text.</span></span></summary><div class="in">
+    <p><span class="pill">Explaining + Evaluating</span><span class="pill">Types of truth</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Distinguish types of truth: historical, moral, religious.</li>
+      <li>Behind: different authors/audiences. Of: different genres/purposes. In front: communities read them together; Christians see Jesus' fulfilment.</li>
+      <li>Judgment: differences show <i>purposeful interpretation</i>, not falsehood. Both communicate religious truth: God's faithfulness despite human failure and hope for restoration.</li>
+    </ul></div></details>
+
+  <details><summary><span class="q"><span class="n">Q8</span><span>Evaluate how Chronicles uses David and Solomon to encourage the returned exiles, and the extent to which this message remains significant today.</span></span></summary><div class="in">
+    <p><span class="pill">Evaluating</span><span class="pill">Sources 4, 6, 3</span></p>
+    <h4>Plan</h4>
+    <ul>
+      <li>Context: post-exile, Temple rebuilt, no king. Cyrus' decree (36:23), the "incomplete sentence".</li>
+      <li>David plans the Temple, Solomon builds it (1 Chr 28:9-10). Faithful worship and a faithful king bring blessing.</li>
+      <li>Today: continuing faithfulness after loss; community identity; Christian reading of David's line.</li>
+    </ul></div></details>
+
+  <h3>Full model response (Q2-style, about 700 words)</h3>
+  <p>Read this after you have drafted your own. Notice how each paragraph pairs <b>evidence</b> with a <b>why</b>.</p>
+  <details class="model"><summary>Question: To what extent are the differing representations of David in Samuel and Chronicles shaped by the world behind each text? <span></span></summary><div class="in">
+    <p>The Old Testament tells the story of King David twice, and the two accounts feel like different men. This difference is largely, though not only, the result of the world behind each text: the situation, audience and theological purpose of the authors. While genre and the Chronicler's sources also play a part, the historical contexts of the Deuteronomistic editors and the post-exilic Chronicler best explain why Samuel presents a flawed but trusting king and Chronicles an idealised temple-builder.</p>
+    <p>The historical books are not modern history. They are sacred history, which tells "what the events mean in the light of our faith in God", so each author selects and arranges material for a purpose. Source 1 describes Samuel as the "unexpurgated" version, full of "sexual and physical violence, passion, scandal". In 2 Samuel, David commits adultery with Bathsheba, arranges the death of Uriah, is confronted by Nathan ("You are that man"), and watches his family fracture through Amnon, Tamar and Absalom's rebellion (Source 5). Chronicles, by contrast, depicts a "milder, tamer and more pious figure". Source 4 shows David praising God, seeking God's advice before battle, bringing the Ark to Jerusalem and drawing up the plans for the Temple (1 Chr 28:11). Source 6 confirms the key differences: persecution by Saul and the adultery and murder are "left out", while preparations for the Temple are "new material".</p>
+    <p>These differences are best explained by the world behind each text. Samuel belongs to the Deuteronomistic history, written and edited by authors looking back at the rise and fall of the monarchy, after the northern kingdom fell to Assyria in 721 BC and Judah to Babylon in 587 BC. Their conviction was that God rewards faithfulness and punishes sin, so they tell the truth about failure. Source 2 shows this theology at work: Saul, "abandoned by Yahweh", trusts in arms and despairs, while David trusts God and delivers Israel from the Philistines. Samuel's David is therefore both an example of trust and a lesson in the consequences of sin, a pattern the Deuteronomists repeat throughout the history. Chronicles, however, was written after the Exile, when Judah was a small Persian province without a king and with a rebuilt but modest Temple. The Chronicler's measure of faithfulness shifted from the Sinai covenant to proper worship at the Jerusalem Temple. Writing to nurture a rebuilding community, he omits the scandals that his readers already knew from Samuel and highlights what could give them hope: the Temple, the Levites and the Davidic line. Source 6 states the aim directly: to portray David as an image of the future messianic king.</p>
+    <p>Nevertheless, the world behind the text is not the whole explanation. Chronicles does not erase every flaw: it keeps David's census, though it shifts the blame to Satan and ends the episode with the purchase of the Temple's site. It also records that David cannot build the Temple because he has "shed much blood" (1 Chr 22:8). Meanwhile Samuel is not merely scandalous; Source 2 calls it "more sophisticated and theological". So Source 1's word "censored" overstates the case. The Chronicler is not concealing David's history from a naive audience but retelling it for a different purpose, and the Church reads both books together. This is the world in front of the text, where the two portraits join in the hope for a Messiah. Source 3 shows how Psalm 89 and Luke 1:32-33 draw on the covenant to present Jesus as the Davidic king, "despite his failings".</p>
+    <p>In conclusion, the representations of David are shaped to a large extent by the world behind the text. The Deuteronomists, writing about a failed monarchy, offer a truthful and cautionary David, while the Chronicler, writing for the returned exiles, offers a model of worship and a promise of restoration. Genre, theology and later interpretation add depth, but the audience and moment of writing explain the shift most convincingly. Read together, the two accounts do not contradict each other; they give believers a David who is both human and hopeful.</p>
+    <p class="wc">≈ 670 words. Written to show the structure. Write your own in your own words and voice.</p>
+  </div></details>
+</section>
+
+<!-- 12 -->
+<section id="quick">
+  <span class="badge p3">Active recall</span>
+  <h2>12. Quick-fire revision</h2>
+  <p class="lead">Cover the answer, say it aloud, then open it.</p>
+
+  <details><summary>What are the exam format and the word limit?</summary><div class="in">Extended response, 90 minutes plus 10 reading, one question, 600–800 words, stimulus provided.</div></details>
+  <details><summary>Which four criteria are marked?</summary><div class="in">Explaining, Analysing, Evaluating, Communicating.</div></details>
+  <details><summary>What does "world behind the text" mean?</summary><div class="in">The historical and cultural context in which a text was written: author, date, audience, purpose.</div></details>
+  <details><summary>Which group wrote or edited Samuel? Which wrote Chronicles?</summary><div class="in">Samuel: the Deuteronomist school. Chronicles: the Chronicler (probably also Ezra-Nehemiah).</div></details>
+  <details><summary>What is the Deuteronomist pattern?</summary><div class="in">God's love, people sin, punishment, repentance and cry for help, forgiveness, people sin again.</div></details>
+  <details><summary>What changed in the Chronicler's idea of faithfulness?</summary><div class="in">From faithfulness to the Sinai covenant to faithfulness to proper worship at the Jerusalem Temple.</div></details>
+  <details><summary>Name three things left out of Chronicles about David.</summary><div class="in">Persecution by Saul, the adultery with Bathsheba and murder of Uriah, Absalom's rebellion (also Amnon and Tamar).</div></details>
+  <details><summary>Name three things Chronicles adds or emphasises.</summary><div class="in">Genealogies from Adam, preparations for the Temple (1 Chr 22-29), plans for the Temple (28:11-19), organisation of Levites, David's praise.</div></details>
+  <details><summary>Why couldn't David build the Temple (Chronicles)?</summary><div class="in">He had shed much blood (1 Chr 22:8). Solomon builds it.</div></details>
+  <details><summary>What is the key chapter in Samuel and what are the two "houses"?</summary><div class="in">2 Samuel 7. David wants to build God a house (temple); God promises to build David a house (dynasty).</div></details>
+  <details><summary>What does 1 Samuel 16:14 show about Saul?</summary><div class="in">The Spirit of the Lord has left Saul. He is abandoned by Yahweh (Source 2).</div></details>
+  <details><summary>What was Wellhausen's remark?</summary><div class="in">"See what Chronicles has made of David!" (Source 1), about the idealising of David in Chronicles.</div></details>
+  <details><summary>How does the Chronicles poster describe the book's purpose?</summary><div class="in">"A story in search of an ending"; stories about the past that give hope for the future: the coming Messiah and the future of the Temple.</div></details>
+  <details><summary>How does the book of Chronicles end?</summary><div class="in">With Cyrus' decree (2 Chr 36:23): "let him go up…", an incomplete sentence.</div></details>
+  <details><summary>Name the six servant leadership principles.</summary><div class="in">Humility, selflessness, compassion, empowerment, integrity, trust in God.</div></details>
+  <details><summary>Name the three worlds of the text.</summary><div class="in">Behind (historical-cultural), of (narrative/genre), in front (interpretation and use over time).</div></details>
+  <details><summary>Name the three spiritual senses.</summary><div class="in">Allegorical, moral, anagogical. Plus the literal sense.</div></details>
+  <details><summary>Name the six types of truth.</summary><div class="in">Scientific, historical, symbolic, proverbial, moral, religious.</div></details>
+  <details><summary>Key dates: Abraham, Exodus, David, division, Assyria, Babylon, Cyrus.</summary><div class="in">c. 1850 BC, c. 1290 BC, c. 1000 BC, 922 BC, 721 BC, 587 BC, 539 BC.</div></details>
+  <details><summary>What is Messiah?</summary><div class="in">"Anointed king". Christians believe Jesus is the long-awaited Davidic Messiah (Luke 1:32-33).</div></details>
+  <details><summary>What does "Yahweh" mean?</summary><div class="in">"I am the One who is always present" (revealed to Moses).</div></details>
+</section>
+
+<!-- 13 -->
+<section id="notes">
+  <span class="badge p4">For transparency</span>
+  <h2>13. Where everything came from, and what is missing</h2>
+  <h3>Your teacher's units, merged into this guide</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Original file (unit)</th><th>Now lives in</th></tr>
+    <tr><td>Sprint Through Salvation History, Week 1 and 2 slides, Old Testament summary video (Unit 1)</td><td>§9 Background</td></tr>
+    <tr><td>Homeland and Kingdom, Characters of the Old Testament (Unit 1)</td><td>§9 Who's who, §6</td></tr>
+    <tr><td>Interpreting the Bible, Types of Truth, World of the Text Analysis (Unit 2)</td><td>§8</td></tr>
+    <tr><td>Samuel and Chronicles videos (Units 2 and 4)</td><td>§3, §4</td></tr>
+    <tr><td>Introduction to the Historical Books, WBT scaffold (Unit 3)</td><td>§7, §4</td></tr>
+    <tr><td>Week 4 PPT (Unit 3)</td><td>§5 Servant leadership, priestly/kingly works</td></tr>
+    <tr><td>Week 5 PPT, Chronicles Study Guide, Homework Sheet, Written Response (Unit 4)</td><td>§3, §5, §10, §11 Q5</td></tr>
+    <tr><td>Psalms video (Unit 4)</td><td>§9 (brief)</td></tr>
+    <tr><td>Week 6, David worksheet, Character in Biblical Narrative (Unit 5)</td><td>§3, §6</td></tr>
+    <tr><td>Marking criteria and stimulus</td><td>§1, §2</td></tr>
+  </table></div>
+
+  <div class="box note"><strong class="t">Things to know</strong>
+    <ul>
+      <li><b>Not provided:</b> the "Week 3 PPT 2026" file, the textbook chapters your slides mention, and the Saul and Solomon character analyses. The YouTube videos could not be watched; I used your Bible Project posters (Sources 5 and 6), which cover the same ground. Check your class notes from Week 3 for anything extra.</li>
+      <li><b>My additions:</b> the filled-in character notes (Goliath, Jonathan, Amnon, Absalom, Nathan), the Samuel/Chronicles verse comparisons beyond your sources (e.g. 1 Chr 10:13-14, 21, 22:8), Solomon's profile, Tanakh structure, and the model essay come from general biblical knowledge rather than your files. Compare them with your class notes and textbook, and ask your teacher if anything differs.</li>
+      <li><b>The exam prediction is an inference</b> from the marking criteria and stimulus. Also check your teacher's exam notice for the date and any extra rules.</li>
+    </ul></div>
+</section>
+
+<footer>Good luck. Write two timed responses before the exam and compare them against the criteria in section 1.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var boxes=document.querySelectorAll('#checks input[type=checkbox]');
+  for(var i=0;i<boxes.length;i++){(function(b){
+    try{b.checked=localStorage.getItem('sor-'+b.dataset.k)==='1'}catch(e){}
+    b.addEventListener('change',function(){try{localStorage.setItem('sor-'+b.dataset.k,b.checked?'1':'0')}catch(e){}});
+  })(boxes[i]);}
+})();
+</script>
